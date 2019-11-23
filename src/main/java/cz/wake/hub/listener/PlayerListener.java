@@ -27,6 +27,7 @@ public class PlayerListener implements Listener {
         Player p = e.getPlayer();
         if (p.getLocation().getZ() <= 418 && (p.getLocation().getX() >= -273 || p.getLocation().getX() <= -245)) {
             if(!players.contains(p)){
+                players.add(p);
                 Main.getInstance().getCraftBalancerManager().connectPlayer(p, "main-lobby");
                 Bukkit.getScheduler().runTaskLater(Main.getInstance(), new Runnable() {
                     @Override

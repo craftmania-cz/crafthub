@@ -3,6 +3,7 @@ main: cz.wake.hub.Main
 version: 1.1
 author: MrWakeCZ
 depend: [Multiverse-Core]
+api-version: "1.14"
 
 commands:
   sendplayer:

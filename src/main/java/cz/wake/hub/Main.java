@@ -29,6 +29,9 @@ public class Main extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new PlayerListener(), this);
 
         for (World w : Bukkit.getWorlds()) {
+            w.setGameRule(GameRule.ANNOUNCE_ADVANCEMENTS, false);
+            w.setGameRule(GameRule.DO_FIRE_TICK, false);
+            w.setGameRule(GameRule.DO_DAYLIGHT_CYCLE, false);
             for (Entity e : w.getEntities()){
                 e.remove();
             }

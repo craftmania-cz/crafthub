@@ -6,7 +6,7 @@ apply plugin: 'java'
 apply plugin: 'maven'
 
 group 'cz.wake.hub'
-version '1.0.0'
+version '1.1.0'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -25,7 +25,7 @@ repositories {
 }
 
 dependencies {
-    compileOnly ('org.spigotmc:spigot-api:1.12.2-R0.1-SNAPSHOT') {
+    compileOnly ('org.spigotmc:spigot-api:1.14.4-R0.1-SNAPSHOT') {
         exclude group: 'net.md-5'
     }
 }

@@ -6,10 +6,10 @@ apply plugin: 'java'
 apply plugin: 'maven'
 
 group 'cz.wake.hub'
-version '1.1.0'
+version '1.2.0'
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+sourceCompatibility = 11
+targetCompatibility = 11
 
 // Nastaveni UTF
 tasks.withType(JavaCompile) {
@@ -20,6 +20,7 @@ clean { delete "./target" }
 clean { delete "./build" }
 
 repositories {
+    flatDir { dirs 'libs' }
     mavenCentral()
     maven { url "https://hub.spigotmc.org/nexus/content/repositories/snapshots/" }
     maven { url "https://repo.codemc.org/repository/maven-public/" }
@@ -29,7 +30,7 @@ dependencies {
     compileOnly ('org.spigotmc:spigot-api:1.14.4-R0.1-SNAPSHOT') {
         exclude group: 'net.md-5'
     }
-    compileOnly ('fr.xephi:authme:5.6.0-SNAPSHOT')
+    compileOnly name: 'AuthMe-5.6.0-beta2'
 }
 
 task compilePlugin(type: Jar) {

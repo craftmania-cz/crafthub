@@ -20,6 +20,7 @@ import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class PlayerListener implements Listener {
 
@@ -29,22 +30,9 @@ public class PlayerListener implements Listener {
     @EventHandler
     public void onMove(PlayerMoveEvent e) {
         Player p = e.getPlayer();
-        if (p.getLocation().getZ() <= 418 && (p.getLocation().getX() >= -273 || p.getLocation().getX() <= -245)) {
-            if(!players.contains(p)){
-                players.add(p);
-                Main.getInstance().getCraftBalancerManager().connectPlayer(p, "main-lobby");
-                Bukkit.getScheduler().runTaskLater(Main.getInstance(), new Runnable() {
-                    @Override
-                    public void run() {
-                        players.remove(p);
-                    }
-                }, 100L);
-            }
-        }
-
         if (p.getLocation().getY() <= 60) {
             p.setFallDistance(0);
-            p.teleport(new Location(Bukkit.getWorld("whub"), -259.5, 86.0, 451.5, -180, 0));
+            p.teleport(new Location(Bukkit.getWorld("whub_spawn"), 0.5, 100.0, 0.5, -90, 0));
             p.sendMessage("§cNope.... :}");
         }
     }
@@ -64,7 +52,7 @@ public class PlayerListener implements Listener {
     public void onChat(AsyncPlayerChatEvent e){
         Player p = e.getPlayer();
         e.setCancelled(true);
-        p.sendMessage("§cNelze na prihlasovacim lobby psat!");
+        p.sendMessage("§cNelze psát do chatu na přihlašovacím lobby.");
     }
 
     @EventHandler(priority = EventPriority.HIGH)
@@ -97,7 +85,7 @@ public class PlayerListener implements Listener {
         if (e.getCause() == PlayerTeleportEvent.TeleportCause.NETHER_PORTAL) {
             e.setCancelled(true);
         }
-        if (e.getTo().getWorld() == Bukkit.getWorld("world_nether")) {
+        if (Objects.requireNonNull(e.getTo()).getWorld() == Bukkit.getWorld("world_nether")) {
             e.setCancelled(true);
         }
     }

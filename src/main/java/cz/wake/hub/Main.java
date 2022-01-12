@@ -30,7 +30,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         craftBalancerManager = new CraftBalancerManager(this);
 
         getCommand("sendplayer").setExecutor(new SenderPlayer_command());
-        getCommand("skip").setExecutor(new LobbyCommand());
+        //getCommand("skip").setExecutor(new LobbyCommand());
 
         getServer().getPluginManager().registerEvents(new PlayerListener(), this);
 
